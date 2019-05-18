@@ -29,6 +29,11 @@
     padding-right: 20px;
     width: 120px;
     text-align: left;
+    flex-shrink: 0;
+}
+
+.add-form__map {
+    height: 300px;
 }
 
 .add-form__input,
@@ -41,7 +46,7 @@
     resize: none;
 }
 
-.add-form__tag {
+.add-form__tag-checkbox {
     position: absolute;
     opacity: 0;
     left: -1000px;
@@ -71,6 +76,12 @@
     transition-duration: 0.2s;
     transition-property: filter;
     user-select: none;
+}
+
+.add-form__tags {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
 .add-form__tag-button {

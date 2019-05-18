@@ -64,13 +64,12 @@ export default class MapPage extends Component {
   }
 
   componentDidMount() {
-    fetch(`${process.env.REACT_APP_URL}/api/Events`,{//public-api/v1.4/events/?lang=ru&fields=dates,short_title,images,title,description,id&expand=dates&location=nsk&actual_since=1444385206&actual_until=1644385405&is_free=true`, { //https://justgonskapitest.azurewebsites.net    ${process.env.REACT_APP_URL}/api/Test
-      mode: 'cors'
+    fetch(`http://localhost:5000/api/v1/troubles`,{//public-api/v1.4/events/?lang=ru&fields=dates,short_title,images,title,description,id&expand=dates&location=nsk&actual_since=1444385206&actual_until=1644385405&is_free=true`, { //https://justgonskapitest.azurewebsites.net    ${process.env.REACT_APP_URL}/api/Test
+      mode: 'no-cors'
     }).then(res => {
       return res.json()
     }).then(val => {
-      let list = val.results;
-      this.setState({list: list});
+      this.setState({list: val});
     });
   }
 
@@ -105,7 +104,7 @@ export default class MapPage extends Component {
                 <Marker
                   className='map__circle no-click'
                   key={ind}
-                  position={[val.place.coords.lat, val.place.coords.lon]}
+                  position={val.coordinates}
                   icon={this.getIcon()}
                   onClick={() => {this.showInfo(val)}}
                 >
@@ -119,7 +118,8 @@ export default class MapPage extends Component {
         <div className="map__info" ref='info'>
         {
             this.state.info &&
-            <h2>{this.state.info.title.toUpperCase()}</h2>
+            <h2>{this.state.info.name.toUpperCase()}</h2>
+          
         }
         </div>
       </div>
