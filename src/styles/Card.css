@@ -1,0 +1,12 @@
+.card {
+    width: 400px;
+    box-sizing: border-box;
+    border: 1px solid #000;
+    border-radius: 5px;
+    margin: 20px;
+}
+
+.card__footer {
+    display: flex;
+    justify-content: space-between;
+}
