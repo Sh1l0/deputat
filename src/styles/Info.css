@@ -1,31 +1,62 @@
 .info {
-    max-width: 1000px;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    height: 100vh;
 }
 
 .info__tabs {
+    background-color: #444;
+    color: #fff;
     display: flex;
     min-height: 50px;
+
 }
 
 .info__tab {
     display: flex;
-    width: 50%;
+    padding: 7px 50px;
     align-items: center;
     justify-content: center;
     position: relative;
     cursor: pointer;
-    background-color: rgb(175, 175, 175);
+
+}
+
+.info__back {
+  color: #fff;
+  flex-grow: 1;
+  max-width: 50px;
+  text-align: center;
+  font-size: 40px;
+}
+
+.info__inner-tabs {
+  flex-grow: 0;
+  display: flex;
+}
+
+.active {
+  background-color: rgba(255, 255, 255, .2);
 }
 
 .info__tab:hover {
-    background-color: rgb(141, 141, 141);
+    background-color: rgba(255, 255, 255, .1);
+}
+
+.info__tab:active {
+    background-color: rgba(255, 255, 255, .2);
 }
 
 .info__radio {
     opacity: 0;
     position: absolute;
     left: -10000px;
+}
+
+@media (max-width: 500px) {
+  .info {
+    flex-direction: column-reverse;
+  }
 }
