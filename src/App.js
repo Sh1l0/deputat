@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Info from './components/Info';
 import Main from './components/Main';
-import './App.css';
+import './styles/App.css';
 
 export default class App extends Component {
   constructor() {
