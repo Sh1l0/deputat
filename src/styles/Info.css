@@ -1,0 +1,31 @@
+.info {
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.info__tabs {
+    display: flex;
+    min-height: 50px;
+}
+
+.info__tab {
+    display: flex;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    background-color: rgb(175, 175, 175);
+}
+
+.info__tab:hover {
+    background-color: rgb(141, 141, 141);
+}
+
+.info__radio {
+    opacity: 0;
+    position: absolute;
+    left: -10000px;
+}

@@ -13,7 +13,7 @@ export default class App extends Component {
         <Router>
             <Switch>
               <Route path="/" exact component={Main} />
-              <Route path="/map" component={Info} />
+              <Route path="/info" component={Info} />
             </Switch>
         </Router>
     )
