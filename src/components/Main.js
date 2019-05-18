@@ -14,7 +14,7 @@ export default class Main extends Component {
             <h3>Стопхрам</h3>
           </div>
           <div className='main__button-wrapper'>
-            <Link className='no-style' to='/add-trouble'>
+            <Link className='no-style' to='/add'>
               <Button variant="contained" className='main__button'>Сообщить о проблеме</Button>
             </Link>
           </div>
