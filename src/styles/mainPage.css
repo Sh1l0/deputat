@@ -1,0 +1,54 @@
+.main-wrapper {
+  background: url('/nsk.jpg');
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.main__title {
+  color: #fff;
+}
+
+.black {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.main__content {
+  z-index: 2;
+  max-width: 700px;
+  text-align: center;
+}
+
+.no-style {
+  text-decoration: none;
+}
+
+.main__button {
+
+  width: 500px;
+  height: 50px;
+  background-color: #fff !important;
+  color: #000 !important;
+
+}
+
+.main__button-wrapper {
+    margin-top: 15px;
+}
+
+.main__title {
+  margin-bottom: 200px;
+}
+
+@media (max-width: 600px) {
+  .main__button {
+    width: 90vw;
+    height: 50px;
+  }
+}
