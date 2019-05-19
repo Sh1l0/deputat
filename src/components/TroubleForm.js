@@ -43,17 +43,15 @@ export default class TroubleForm extends Component {
     return (
       <div className="main-wrapper">
         <div className="black"></div>
-        <div className="main__content">
           {stage === 'form' && this.renderFirstForm()}
           {stage === 'formData' && this.renderSecondForm()}
-        </div>
       </div>
     )
   }
 
   renderFirstForm() {
     return (
-      <form className="add-form" onSubmit={this.handleSubmit}>
+      <form className="auth__paper" onSubmit={this.handleSubmit}>
         <div className="add-form__title">
           {this.titles[this.formType]}
         </div>
@@ -102,7 +100,7 @@ export default class TroubleForm extends Component {
 
   renderSecondForm() {
     return (
-      <form className="add-form" onSubmit={this.handleSubmit}>
+      <form className="auth__paper" onSubmit={this.handleSubmit}>
         <div className="add-form__title">
           {this.titles[this.formType]}
         </div>
@@ -291,9 +289,11 @@ export default class TroubleForm extends Component {
     }
     fetch(this.getUrl(), options)
           .then(response => {
+            console.log(response);
               return response.json();
           })
           .then(response => {
+            console.log(response);
               if (this.state.stage === 'form' && this.formType === 'add') {
                 this.id = response.id;
                 console.log(this.id);
@@ -328,7 +328,7 @@ export default class TroubleForm extends Component {
 
   fillFormData() {
     var formData = new FormData();
-    formData.append('id', this.id);
+    formData.append('troubleId', this.id);
     for (let i = 0; i < this.picturesNames.length; i++) {
       formData.append('pictures', this.state.pictures[i], this.picturesNames[i]);
     }
@@ -337,17 +337,18 @@ export default class TroubleForm extends Component {
 
   getUrl() {
     if (this.formType === 'add' && this.state.stage === 'form') {
-        return 'http://localhost:5000/api/v1/troubles';
+      console.log('{EQ');
+        return '/api/v1/troubles';
     }
     if (this.formType === 'edit') {
-        return `http://localhost:5000/api/v1/troubles/${'id'}`;
+        return `/api/v1/troubles/${'id'}`;
     }
     if (this.state.stage === 'formData') {
-        return 'http://localhost:5000/api/v1/pictures/UploadPictures';
+        return '/api/v1/pictures/UploadPictures';
     }
   }
 
   getTags() {
-    return fetch("http://localhost:5000/api/v1/tags");
+    return fetch("/api/v1/tags");
   }
 }

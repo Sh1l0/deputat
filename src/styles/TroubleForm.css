@@ -1,15 +1,10 @@
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
 .add-form {
-    display: flex;
-    flex-direction: column;
-    width: 400px;
-    align-items: stretch;
-    justify-content: flex-start;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-    overflow: hidden;
-    box-sizing: border-box;
-    padding: 20px;
+    z-index: 2;
 }
 
 .add-form__title {
