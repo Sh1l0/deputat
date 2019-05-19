@@ -31,7 +31,7 @@ export default class Event extends Component {
   }
 
   componentDidMount() {
-    fetch(`/api/Events/${this.getId()}`, {
+    fetch(`/api/trouble/${this.getId()}}`, {
       mode: 'cors'
     }).then(res => {
       return res.json();
@@ -83,7 +83,7 @@ export default class Event extends Component {
         </Link>
         <Card className=''>
           <CardHeader
-            title={'бляяяяяяяяяяяяяяяяяя'}
+            title={'Заголовок 1'}
             className='event__header'
           />
           {
