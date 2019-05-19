@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Link } from "react-router-dom";
 import '../styles/Card.css';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -14,35 +14,61 @@ import Button from '@material-ui/core/Button';
 export default class RecipeReviewCard extends Component {
   constructor(props) {
     super(props);
-    this.title = this.props.name;
-    this.description = this.props.description;
+    this.data = this.props.data;
+    this.state = {
+      likes: this.props.data.likedUsers.length || 0,
+      canLike: true
+    }
   }
 
   render() {
     return (
       <Card className="card">
         <CardHeader
-          title={this.title}
-          subheader="September 14, 2016"
+          title={this.data.name}
+          subheader={this.data.lastUpdateAt}
         />
         <CardMedia
-          image="/static/images/cards/paella.jpg"
+          image={this.data.images[0]}
           title="Paella dish"
         />
         <CardContent>
           <Typography component="p">
-            {this.description}
+            {this.data.description}
           </Typography>
         </CardContent>
         <CardActions disableActionSpacing className='card__footer'>
-          <IconButton aria-label="Add to favorites">
-            <FavoriteIcon />
+          <IconButton aria-label="Add to favorites"
+            className={`${this.state.canLike ? '_liked' : ''}`} >
+            <FavoriteIcon onClick={this.onLike} />
+            <div className='card__likes'>{this.state.likes}</div>
           </IconButton>
-          <Button variant="contained">
-            Подробнее
-          </Button>
+          <Link to={`/trauble/${this.data.id}`} className='no-style' >
+            <Button variant="contained" onClick={this.handleRedirect}>
+              Подробнее
+            </Button>
+          </Link>
         </CardActions>
       </Card>
     );
+  }
+
+  onLike = () => {
+    if (this.state.canLike) {
+      fetch(`/api/v1/troubles/toggle-like/${this.data.id}`)
+      .then(() => {
+        this.setState({
+          likes: +this.state.likes + 1,
+          canLike: false
+        })
+      })
+      .catch(error => {
+        console.error(error);
+      })
+    }
+  }
+
+  handleRedirect = () => {
+    console.log('');
   }
 }

@@ -7,10 +7,12 @@ import IconButton from '@material-ui/core/IconButton';
 import Checkbox from '@material-ui/core/Checkbox';
 
 export default class Main extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      remember: false
+      username: null,
+      password: null,
+      rememberme: false
     }
   }
 
@@ -29,28 +31,73 @@ export default class Main extends Component {
             </IconButton>
           </Link>
           <h2>Вход</h2>
-          <div className='auth__input-area'>
-            <label htmlFor="login">Логин</label>
-            <input type="text" className="auth__input" id='login'/>
+          <form className="auth__input-area" onSubmit={this.handleSubmit}>
+            <label htmlFor="username">Логин</label>
+            <input type="text" className="auth__input" id='username' name='username'
+              value={this.state.username} onChange={this.handleChange} />
             <label htmlFor="password">Пароль</label>
-            <input type="password" className="auth__input" id='password'/>
+            <input type="password" className="auth__input" id='password' name='password'
+              value={this.state.password} onChange={this.handleChange} />
             <div className="remember">
               <Checkbox
-                checked={this.state.remember}
-                onChange={(e) => {this.handleChange(e)}}
-                value="remember"
+                checked={this.state.rememberme}
+                onChange={this.handleCheck}
                 color="primary"
-                id='remember'
+                id='rememberme'
+                name='rememberme'
+                value={this.state.rememberme}
               />
-              <label htmlFor="remember">Запомнить меня</label>
+              <label htmlFor="rememberme">Запомнить меня</label>
             </div>
-          </div>
-          <Button className='auth__button'>Войти</Button>
+          </form>
+          <Button className='auth__button' onClick={this.handleSubmit}>Войти</Button>
           <br/>
            <span> или</span>
           <Link to='/register' className='default__link'>Зарегестрироваться</Link>
         </div>
       </div>
     )
+  }
+
+  handleCheck = () => {
+    this.setState({
+      rememberme: !this.state.rememberme
+    })
+  }
+
+  handleChange = (event) => {
+    const { target } = event;
+    this.setState({
+        [target.name]: target.value
+    })
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    let form = this.fillForm();
+    let options = {
+        method: "POST",
+        body: JSON.stringify(form)
+    };
+    options.headers = {"Content-Type": "application/json"};
+    fetch('/api/v1/login/', options)
+          .then(response => {
+            console.log('NICE');
+              return response.json();
+          })
+        .catch(error => {
+            console.error(error);
+            this.setState({
+                info: 'Ошибка'
+            });
+        })
+  }
+
+  fillForm() {
+    let form = {};
+    for (let input in this.state) {
+        form[input] = this.state[input];
+    }
+    return form;
   }
 }

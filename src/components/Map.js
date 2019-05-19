@@ -67,7 +67,7 @@ export default class MapPage extends Component {
 
   componentDidMount() {
     fetch(`http://localhost:5000/api/v1/troubles`,{//public-api/v1.4/events/?lang=ru&fields=dates,short_title,images,title,description,id&expand=dates&location=nsk&actual_since=1444385206&actual_until=1644385405&is_free=true`, { //https://justgonskapitest.azurewebsites.net    ${process.env.REACT_APP_URL}/api/Test
-      mode: 'no-cors'
+      mode: 'cors'
     }).then(res => {
       return res.json()
     }).then(val => {

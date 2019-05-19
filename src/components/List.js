@@ -24,15 +24,15 @@ export default class List extends Component {
   renderCards() {
     const cards = this.state.cards.map((card) => {
       return (
-        <Card />
+        <Card data={card} key={card.id} />
       )
     });
     return cards;
   }
 
-  /*componentDidMount() {
+  componentDidMount() {
     this.loadElements();
-  }*/
+  }
 
   loadElements = () => {
     this.getCards()
@@ -40,6 +40,7 @@ export default class List extends Component {
             return result.json();
         })
         .then(result => {
+          console.log(result);
             this.setState({
                 didLoad: true,
                 cards: result
@@ -51,6 +52,6 @@ export default class List extends Component {
   }
 
   getCards() {
-    return fetch('');
+    return fetch('/api/v1/troubles');
   }
 }
