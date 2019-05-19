@@ -5,6 +5,8 @@ import '../styles/Map.css';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import L from 'leaflet';
 import 'react-leaflet-markercluster/dist/styles.min.css';
+import Profile from '@material-ui/icons/AccountCircle';
+import IconButton from '@material-ui/core/IconButton';
 
 export default class MapPage extends Component {
   constructor() {
@@ -93,6 +95,13 @@ export default class MapPage extends Component {
             url="http://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png"
             attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
           />
+          <div className="map__profile">
+            <Link to='/login'>
+              <IconButton style={{padding: 0}} color="default">
+                <Profile style={{fontSize: 50}} />
+              </IconButton>
+            </Link>
+          </div>
           <div className='map__control no-click'>
             <button className='map__button no-click' onClick={this.zoomIn} >+</button>
             <button className='map__button no-click' onClick={this.zoomOut} >-</button>

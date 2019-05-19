@@ -59,6 +59,19 @@
   bottom: 0;
 }
 
+.map__profile {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  right: 10px;
+  top: 10px;
+  height: 50px;
+  width: 50px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  background-color: #fff;
+  border-radius: 25px;
+  z-index: 999;
+  position: absolute;
+}
+
 .show {
   opacity: 1;
   z-index: 9999;

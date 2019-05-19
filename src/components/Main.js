@@ -15,12 +15,20 @@ export default class Main extends Component {
           </div>
           <div className='main__button-wrapper'>
             <Link className='no-style' to='/add'>
-              <Button variant="contained" className='main__button'>Сообщить о проблеме</Button>
+              <Button variant="contained" className='main__button main__add'>Сообщить о проблеме</Button>
             </Link>
           </div>
           <div className='main__button-wrapper'>
             <Link className='no-style' to='/info'>
               <Button className='main__button' variant="contained">Узнать о проблемах города</Button>
+            </Link>
+          </div>
+          <div className='sign-in__area'>
+            <Link className='no-style' to='/login'>
+              <Button className='main__button' variant="contained">Войти</Button>
+            </Link>
+            <Link className='no-style' to='/register'>
+              <Button className='main__button' variant="contained">Регистрация</Button>
             </Link>
           </div>
         </div>
