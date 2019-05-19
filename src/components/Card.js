@@ -12,12 +12,17 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import Button from '@material-ui/core/Button';
 
 export default class RecipeReviewCard extends Component {
+  constructor(props) {
+    super(props);
+    this.title = this.props.name;
+    this.description = this.props.description;
+  }
 
   render() {
     return (
       <Card className="card">
         <CardHeader
-          title="Shrimp and Chorizo Paella"
+          title={this.title}
           subheader="September 14, 2016"
         />
         <CardMedia
@@ -26,8 +31,7 @@ export default class RecipeReviewCard extends Component {
         />
         <CardContent>
           <Typography component="p">
-            This impressive paella is a perfect party dish and a fun meal to cook together with your
-            guests. Add 1 cup of frozen peas along with the mussels, if you like.
+            {this.description}
           </Typography>
         </CardContent>
         <CardActions disableActionSpacing className='card__footer'>
