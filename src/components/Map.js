@@ -127,8 +127,13 @@ export default class MapPage extends Component {
         <div className="map__info" ref='info'>
         {
             this.state.info &&
-            <h2>{this.state.info.name.toUpperCase()}</h2>
-          
+            <div className='map__additional'>
+              <h2>{this.state.info.name.toUpperCase()}</h2>
+                <img src={this.state.info.images[0]} width='200' alt=""/>
+                <div>{this.state.info.description}</div>
+                <div>{this.state.info.address}</div>
+            </div>
+
         }
         </div>
       </div>

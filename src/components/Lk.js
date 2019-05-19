@@ -27,7 +27,7 @@ export default class Lk extends Component {
             <span>Нагибатор2005</span>
           </div>
           <div className="profile__added">
-
+            
           </div>
       </div>
       </div>
