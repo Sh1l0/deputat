@@ -5,6 +5,7 @@ import {Map, TileLayer, Circle, Marker} from 'react-leaflet';
 import L from 'leaflet';
 import Button from '@material-ui/core/Button';
 import 'react-leaflet-markercluster/dist/styles.min.css';
+import '../styles/Auth.css';
 
 export default class TroubleForm extends Component {
   constructor(props) {
@@ -35,7 +36,7 @@ export default class TroubleForm extends Component {
       pictures: [],
       info: ""
     }
-   
+
   }
 
   render() {
@@ -43,7 +44,7 @@ export default class TroubleForm extends Component {
     return (
       <div className="main-wrapper">
         <div className="black"></div>
-        <div className="main__content">
+        <div className="auth__paper">
           {stage === 'form' && this.renderFirstForm()}
           {stage === 'formData' && this.renderSecondForm()}
         </div>
@@ -53,7 +54,7 @@ export default class TroubleForm extends Component {
 
   renderFirstForm() {
     return (
-      <form className="add-form" onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit}>
         <div className="add-form__title">
           {this.titles[this.formType]}
         </div>
@@ -160,7 +161,7 @@ export default class TroubleForm extends Component {
             coordinates: [x, y]
           });
         }
-        
+
       })
       .catch(error => {
         console.error(error);
@@ -348,6 +349,6 @@ export default class TroubleForm extends Component {
   }
 
   getTags() {
-    return fetch("http://localhost:5000/api/v1/tags");
+    return fetch("http://192.168.0.1/api/v1/tags");
   }
 }
