@@ -16,7 +16,6 @@ export default class List extends Component {
     const { didLoad } = this.state;
     return (
       <div className="card-wrapper">
-        <Card />
         {didLoad ? this.renderCards() : null}
       </div>
     )

@@ -9,12 +9,13 @@ import 'react-leaflet-markercluster/dist/styles.min.css';
 export default class TroubleForm extends Component {
   constructor(props) {
     super(props);
+    this.id = this.props.id || null;
     this.method = this.props.method;
     this.formType = this.props.formType;
     this.picturesNames = [];
     this.inputs = {
       add: ['name', 'description', 'address', 'coordinates', 'tags'],
-      edit: ['name', 'description', 'address', 'coordinates', 'tags'],
+      edit: ['name', 'description', 'address', 'coordinates', 'tags']
     };
     this.titles = {
       add: 'Добавить',
@@ -74,10 +75,12 @@ export default class TroubleForm extends Component {
               url="http://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png"
               attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
             />
-            <div className='map__control no-click'>
-              <button className='map__button no-click' onClick={this.zoomIn} >+</button>
-              <button className='map__button no-click' onClick={this.zoomOut} >-</button>
-            </div>
+            <Marker
+                  className='map__circle no-click'
+                  position={this.state.coordinates || [0, 0]}
+                  icon={this.getIcon()}
+                >
+            </Marker>
           </Map>
         </div>
         <Button variant="contained" onClick={this.handleSubmit}>
@@ -85,6 +88,16 @@ export default class TroubleForm extends Component {
         </Button>
       </form>
     )
+  }
+
+  getIcon = () => {
+    let url = "/marker_red.svg";
+    var icon = L.icon({
+      iconUrl: `${url}`,
+      iconSize: [70, 70],
+      iconAnchor: [35, 60]// size of the icon
+    });
+    return icon;
   }
 
   renderSecondForm() {
@@ -316,23 +329,25 @@ export default class TroubleForm extends Component {
   fillFormData() {
     var formData = new FormData();
     formData.append('id', this.id);
-    formData.append('pictures', this.state.pictures, this.picturesNames);
+    for (let i = 0; i < this.picturesNames.length; i++) {
+      formData.append('pictures', this.state.pictures[i], this.picturesNames[i]);
+    }
     return formData;
   }
 
   getUrl() {
     if (this.formType === 'add' && this.state.stage === 'form') {
-        return '/api/v1/troubles';
+        return 'http://localhost:5000/api/v1/troubles';
     }
     if (this.formType === 'edit') {
-        return `/api/v1/troubles/${'id'}`;
+        return `http://localhost:5000/api/v1/troubles/${'id'}`;
     }
     if (this.state.stage === 'formData') {
-        return '/api/v1/pictures/UploadPictures';
+        return 'http://localhost:5000/api/v1/pictures/UploadPictures';
     }
   }
 
   getTags() {
-    return fetch("/api/v1/tags");
+    return fetch("http://localhost:5000/api/v1/tags");
   }
 }
