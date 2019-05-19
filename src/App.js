@@ -22,7 +22,7 @@ export default class App extends Component {
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
               <Route path="/add" component={Add} />
-              <Route path="/event/" component={Event} />
+              <Route path="/trouble/" component={Event} />
               <Route path="/profile" component={Lk} />
             </Switch>
         </Router>

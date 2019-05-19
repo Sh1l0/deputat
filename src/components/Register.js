@@ -69,7 +69,7 @@ export default class Main extends Component {
         body: JSON.stringify(form)
     };
     options.headers = {"Content-Type": "application/json"};
-    fetch('/api/v1/users/', options)
+    fetch('http://130.193.38.210/api/v1/users/', options)
           .then(response => {
             console.log('NICE');
               return response.json();

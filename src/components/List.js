@@ -52,6 +52,6 @@ export default class List extends Component {
   }
 
   getCards() {
-    return fetch('/api/v1/troubles');
+    return fetch('http://130.193.38.210/api/v1/troubles');
   }
 }

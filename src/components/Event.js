@@ -31,7 +31,7 @@ export default class Event extends Component {
   }
 
   componentDidMount() {
-    fetch(`/api/trouble/${this.getId()}}`, {
+    fetch(`http://130.193.38.210/api/trouble/${this.getId()}}`, {
       mode: 'cors'
     }).then(res => {
       return res.json();

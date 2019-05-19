@@ -43,7 +43,7 @@ export default class RecipeReviewCard extends Component {
             <FavoriteIcon onClick={this.onLike} />
             <div className='card__likes'>{this.state.likes}</div>
           </IconButton>
-          <Link to={`/trauble/${this.data.id}`} className='no-style' >
+          <Link to={`/trouble/${this.data.id}`} className='no-style' >
             <Button variant="contained" onClick={this.handleRedirect}>
               Подробнее
             </Button>
@@ -55,7 +55,7 @@ export default class RecipeReviewCard extends Component {
 
   onLike = () => {
     if (this.state.canLike) {
-      fetch(`/api/v1/troubles/toggle-like/${this.data.id}`)
+      fetch(`http://130.193.38.210/api/v1/troubles/toggle-like/${this.data.id}`)
       .then(() => {
         this.setState({
           likes: +this.state.likes + 1,

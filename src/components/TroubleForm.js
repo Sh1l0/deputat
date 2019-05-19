@@ -339,17 +339,17 @@ export default class TroubleForm extends Component {
   getUrl() {
     if (this.formType === 'add' && this.state.stage === 'form') {
       console.log('{EQ');
-        return '/api/v1/troubles';
+        return 'http://130.193.38.210/api/v1/troubles';
     }
     if (this.formType === 'edit') {
-        return `/api/v1/troubles/${'id'}`;
+        return `http://130.193.38.210/api/v1/troubles/${'id'}`;
     }
     if (this.state.stage === 'formData') {
-        return '/api/v1/pictures/UploadPictures';
+        return 'http://130.193.38.210/api/v1/pictures/UploadPictures';
     }
   }
 
   getTags() {
-    return fetch("/api/v1/tags");
+    return fetch("http://130.193.38.210/api/v1/tags");
   }
 }
