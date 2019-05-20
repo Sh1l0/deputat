@@ -83,7 +83,7 @@ export default class Event extends Component {
         </Link>
         <Card className=''>
           <CardHeader
-            title={'Заголовок 1'}
+            title={'бляяяяяяяяяяяяяяяяяя'}
             className='event__header'
           />
           {
